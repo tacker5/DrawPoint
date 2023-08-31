@@ -3,14 +3,21 @@
 vpoint input(){
     vpoint p;
     int number;
+A:
     std::cout << "how many points: ";
     std::cin >> number;
+    if (number < 0)
+        goto A;
+    else if (!number)
+        exit(0);
     point temp;
-    for(int i = 0; i < number;){
-        std::cout << "enter " << ++i << " x: ";
-        std::cin >> temp.second;
-        std::cout << "enter " << i << " y: ";
-        std::cin >> temp.first;
+    for(int i = 1; i <= number; i++){
+        do {
+            std::cout << "enter " << i << " x: ";
+            std::cin >> temp.second;
+            std::cout << "enter " << i << " y: ";
+            std::cin >> temp.first;
+        } while (temp.first < 1 || temp.second < 1);
         p.push_back(temp);
     }
     sort(p);
